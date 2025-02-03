@@ -1,5 +1,7 @@
 package com.sesi.projeto.entities;
 
+import com.sesi.projeto.dto.ProdutoDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +18,16 @@ public class Produto {
 	private String nome;
 	private double preco;
 	private String descricao;
+	
+	
+	
+	public Produto(ProdutoDto d) {
+		
+		
+		this.nome = d.nome();
+		this.preco = d.preco();
+		this.descricao = d.descricao();
+	}
 	
 	
 	public Produto() {
