@@ -3,6 +3,8 @@ package com.sesi.projeto.entities;
 import java.time.Instant;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -10,6 +12,11 @@ import jakarta.persistence.Table;
 public class Pagamento {
 	private long id;
 	private Instant momento;
+	
+	@OneToOne
+	@MapsId
+	private Pedido pedido;
+	
 	public Pagamento(long id, Instant momento) {
 		super();
 		this.id = id;

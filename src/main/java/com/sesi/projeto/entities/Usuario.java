@@ -1,9 +1,15 @@
 package com.sesi.projeto.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sesi.projeto.dto.UsuarioDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +24,9 @@ public class Usuario {
 	private String senha;
 	private String roles;
 	
+	@OneToMany(mappedBy = "cliente_id")
+	private List<Pedido> pedidos = new ArrayList<Pedido>();
+	
 	
 	
 	public Usuario(long id, String nome, String email, String telefone, String senha, String roles) {
@@ -28,6 +37,9 @@ public class Usuario {
 		this.telefone = telefone;
 		this.senha = senha;
 		this.roles = roles;
+	}
+	public Usuario(UsuarioDTO dto) {
+		// TODO Auto-generated constructor stub
 	}
 	public long getId() {
 		return id;
